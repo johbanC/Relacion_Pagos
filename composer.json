@@ -1,0 +1,6 @@
+{
+    "require": {
+        "kartik-v/bootstrap-fileinput": "^5.1",
+        "spipu/html2pdf": "^4.6"
+    }
+}
