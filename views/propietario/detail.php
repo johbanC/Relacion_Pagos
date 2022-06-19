@@ -51,7 +51,7 @@
                 <!-- <?=$propietario->documento_tercero?><br>
                 <?=$propietario->nombre_tercero?><br>
                 <?=$propietario->apellido_tercero?><br>
-                <?=$propietario->nombre_banco?><br>
+                <?=$propietario->nombre_banco?><br> 
                 <?=$propietario->tipo_cuenta?><br>
                 <?=$propietario->nro_cuenta?><br> -->
               </address>
