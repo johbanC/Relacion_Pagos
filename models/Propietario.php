@@ -109,7 +109,7 @@ class Propietario{
 
     /* IMPRIMIR PROPIETARIO EN LA VISTA DETALLES */
     public function getOneDetail(){
-        $propietario = $this->db->query("SELECT p.idPropietario, p.fecha_creacion AS fecha_creacion, p.nombre AS NomPro, p.apellido AS ApePro, p.celular, p.email AS email, 
+        $propietario = $this->db->query("SELECT p.idPropietario AS idPropietario, p.fecha_creacion AS fecha_creacion, p.nombre AS NomPro, p.apellido AS ApePro, p.celular, p.email AS email, 
            tp.prefijo, p.documento, b.nombre AS NomBan, tc.nombre AS NomTipoCuen, nro_cuenta 
            FROM Propietario p 
            INNER JOIN TipoDocumento tp ON p.idTipoDocumento = tp.idTipoDocumento 

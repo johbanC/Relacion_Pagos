@@ -59,6 +59,14 @@ class Utils{
 		return $tipo_cuenta;
 	}
 
+	public static function showTipoPropiedad(){
+		require_once 'models/TipoPropiedad.php';
+		$tipo_propiedad = new TipoPropiedad();
+		$tipo_propiedad = $tipo_propiedad->getAll();
+
+		return $tipo_propiedad;
+	}
+
 
 
 

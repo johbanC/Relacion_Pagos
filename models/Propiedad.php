@@ -106,7 +106,16 @@ WHERE pro.idPropietario = {$this->getIdPropietario()}");
 
 	/*GUARDAR PROPIEDAD*/
 	public function save(){
-		$sql = "INSERT INTO Propiedad()";
+		$sql = "INSERT INTO Propiedad(idPropietario, idTipoPropiedad, sector_unidad, nro_propiedad, comision, canon, iva, idEstatus) VALUES ('{$this->getIdPropietario()}','{$this->getIdtipopropiedad()}','{$this->getSector_unidad()}','{$this->getNro_propiedad()}','{$this->getComision()}','{$this->getCanon()}','{$this->getIva()}', 1) ";
+		
+			$save = $this->db->query($sql);
+
+			$result = false;
+			if ($save) {
+				$result = true;
+			}
+
+			return $result;
 	}
 
 

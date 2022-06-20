@@ -1,3 +1,19 @@
+<?php if (isset($_SESSION['propiedad']) && $_SESSION['propiedad'] == 'complete'): ?>
+  <script type="text/javascript">toastr.success('Guardado con exito.');</script>
+<?php elseif(isset($_SESSION['propiedad']) && $_SESSION['propiedad'] == 'failed'): ?>
+  <script type="text/javascript">toastr.error("Error al guardar, Verifica los datos introducidos.");</script>
+<?php endif; ?> 
+
+<?php if (isset($_SESSION['propiedad_edit']) && $_SESSION['propiedad_edit'] == 'complete'): ?>
+  <script type="text/javascript">toastr.success('Editado con exito.');</script>
+<?php elseif(isset($_SESSION['propiedad_edit']) && $_SESSION['propiedad_edit'] == 'failed'): ?>
+  <script type="text/javascript">toastr.error("Error al editar, Verifica los datos introducidos.");</script>
+<?php endif; ?> 
+
+<?php Utils::deleteSession('propiedad'); ?>
+<?php Utils::deleteSession('propiedad_edit'); ?> 
+
+
 
 
 <section class="content">
@@ -73,11 +89,20 @@
           <hr>
           <!-- Table row -->
           <div class="row">
-            <div class="col-12 table-responsive">
 
-              <h4>
-                <i class="fas fa-building"></i>Propiedades
-              </h4>
+            <div class="col-md-6 col-sm-12">
+                <h4><i class="fas fa-building"></i>Propiedades</h4>
+              </div>
+
+              <div class="col-md-6 col-sm-12" style="text-align:right;">
+                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-propiedad">
+                  <i class="fas fa-plus"></i>
+                  Agregar Propiedad
+                </button>
+              </div>
+
+
+            <div class="col-12 table-responsive">
 
               <table class="table table-striped" style="text-align:center">
                 <thead>
@@ -107,9 +132,9 @@
                       <td> <?=$PP->TipoPro?> </td>
                       <td> <?=$PP->sector_unidad?> </td>
                       <td> <?=$PP->nro_propiedad?> </td>
-                      <td> <?=$PP->comision?> </td>
-                      <td> <?=$PP->iva?> </td>
-                      <td> <?= number_format($PP->canon,2,",",".") ?> </td>
+                      <td> <?=$PP->comision.'%'?> </td>
+                      <td> <?=$PP->iva.'%'?> </td>
+                      <td> $ <?= $PP->canon ?> </td>
                       <td><span class="badge badge-success">Activo</span></td>
                       <td>
                         <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-tipodocumento-editar<?= $idtipodocumento;?>">
@@ -132,7 +157,7 @@
           </div>
           <!-- /.row -->
 
-         
+
 
           <!-- this row will not appear when printing -->
           <div class="row no-print" style="padding-top: 50px;">
@@ -149,3 +174,9 @@
   </div><!-- /.container-fluid -->
 </section>
     <!-- /.content -->
+
+
+
+
+
+<?php include 'modal/AgregarPropiedad.php'; ?>
