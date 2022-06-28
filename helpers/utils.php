@@ -67,6 +67,15 @@ class Utils{
 		return $tipo_propiedad;
 	}
 
+	/*CONTAR LAS RELACIONES DE PAGO*/
+	public static function showCountRP(){
+		require_once 'models/RelacionPago.php';
+		$countRP = new RelacionPago();
+		$countRP = $countRP->getCountRP();
+
+		return $countRP;
+	}
+
 
 
 

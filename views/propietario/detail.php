@@ -91,15 +91,15 @@
           <div class="row">
 
             <div class="col-md-6 col-sm-12">
-                <h4><i class="fas fa-building"></i>Propiedades</h4>
-              </div>
+              <h4><i class="fas fa-building"></i>Propiedades</h4>
+            </div>
 
-              <div class="col-md-6 col-sm-12" style="text-align:right;">
-                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-propiedad">
-                  <i class="fas fa-plus"></i>
-                  Agregar Propiedad
-                </button>
-              </div>
+            <div class="col-md-6 col-sm-12" style="text-align:right;">
+              <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-propiedad">
+                <i class="fas fa-plus"></i>
+                Agregar Propiedad
+              </button>
+            </div>
 
 
             <div class="col-12 table-responsive">
@@ -115,7 +115,7 @@
                     <th>Iva</th>
                     <th>Canon</th>
                     <th>Estatus</th>
-                    <th>Subtotal</th>
+                    <th>Relacion de pago</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -124,7 +124,9 @@
                   $i = 1;
                   while($PP = $propiedadP->fetch_object()) :
 
-                    $idPropiedad = $PP->idPropiedad; ?>
+                    $idPropiedad = $PP->idPropiedad; 
+                    $Canon = $PP->canon;
+                    $Canon = number_format($Canon,2,",","."); ?>
 
                     <tr>
 
@@ -134,22 +136,35 @@
                       <td> <?=$PP->nro_propiedad?> </td>
                       <td> <?=$PP->comision.'%'?> </td>
                       <td> <?=$PP->iva.'%'?> </td>
-                      <td> $ <?= $PP->canon ?> </td>
+                      <td> $ <?= $Canon ?> </td>
                       <td><span class="badge badge-success">Activo</span></td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-tipodocumento-editar<?= $idtipodocumento;?>">
-                          <i class="fas fa-receipt"></i>
-                          Relacion de pago
-                        </button>
+                        <form method="POST" action="<?=base_url?>RelacionPago/create">
+                          <div class="input-group input-group-md">      
+                            <input type="hidden" name="idpropiedad" value="<?=$idPropiedad?>">                      
+                            <input type="text" name="dias" class="form-control" placeholder="Dias" style="width:40px">
+                            <span class="input-group-append">
+                              <button type="submit" class="btn btn-sm btn-success"> 
+                                <i class="fas fa-receipt"></i> 
+                                Crear
+                              </button>
+
+                            </span>
+
+                          </div>
+                        </form>
+
+                        
+
                       </td>
 
-                      
+
 
 
                     </tr>
 
                   <?php endwhile; ?>
-                  
+
                 </tbody>
               </table>
             </div>
@@ -173,7 +188,7 @@
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </section>
-    <!-- /.content -->
+<!-- /.content -->
 
 
 

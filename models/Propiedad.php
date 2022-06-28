@@ -95,12 +95,23 @@ class Propiedad{
 	/* IMPRIMIR TODAS LAS PROPIEDADES DEL PROPIETARIO EN ESPECIFICO */
 	public function getDetail(){
 		$propiedad = $this->db->query("SELECT p.idPropiedad, pro.idPropietario, pro.nombre, pro.apellido, tp.nombre, p.sector_unidad, p.nro_propiedad, p.comision, p.canon, p.iva
-FROM Propiedad p
-INNER JOIN Propietario pro ON pro.idPropietario = p.idPropietario
-INNER JOIN TipoPropiedad tp ON tp.idTipoPropiedad = p.idTipoPropiedad
-WHERE pro.idPropietario = {$this->getIdPropietario()}");
+			FROM Propiedad p
+			INNER JOIN Propietario pro ON pro.idPropietario = p.idPropietario
+			INNER JOIN TipoPropiedad tp ON tp.idTipoPropiedad = p.idTipoPropiedad
+			WHERE pro.idPropietario = {$this->getIdPropietario()}");
 
 		return $propiedad;
+	}
+
+	/*IMPRIMIR LOS DATOS PARA LA RELACION DE PAGOS*/
+	public function getOnePropiedad(){
+		$propiedad = $this->db->query("SELECT p.idPropiedad, pro.idPropietario, pro.nombre, pro.apellido, tp.nombre, p.sector_unidad, p.nro_propiedad, p.comision, p.canon, p.iva
+			FROM Propiedad p
+			INNER JOIN Propietario pro ON pro.idPropietario = p.idPropietario
+			INNER JOIN TipoPropiedad tp ON tp.idTipoPropiedad = p.idTipoPropiedad
+			WHERE p.idPropiedad = {$this->getIdPropiedad()}");
+
+		return $propiedadRP->fetch_object();
 	}
 
 
@@ -108,14 +119,14 @@ WHERE pro.idPropietario = {$this->getIdPropietario()}");
 	public function save(){
 		$sql = "INSERT INTO Propiedad(idPropietario, idTipoPropiedad, sector_unidad, nro_propiedad, comision, canon, iva, idEstatus) VALUES ('{$this->getIdPropietario()}','{$this->getIdtipopropiedad()}','{$this->getSector_unidad()}','{$this->getNro_propiedad()}','{$this->getComision()}','{$this->getCanon()}','{$this->getIva()}', 1) ";
 		
-			$save = $this->db->query($sql);
+		$save = $this->db->query($sql);
 
-			$result = false;
-			if ($save) {
-				$result = true;
-			}
+		$result = false;
+		if ($save) {
+			$result = true;
+		}
 
-			return $result;
+		return $result;
 	}
 
 
