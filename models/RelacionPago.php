@@ -36,6 +36,22 @@ class RelacionPago{
 		$this->idPropiedad = $idPropiedad;
 	}
 
+	/* IMPRIMIR TODAS LAS RELACIONES DE PAGO PARA TABLAS */
+	public function getAll(){
+		$relacionpago = $this->db->query("SELECT rp.idRelacionPago, rp.nro_relacion, pp.nombre, pp.apellido,  p.idPropiedad, p.sector_unidad, p.nro_propiedad
+										FROM RelacionPago rp
+										INNER JOIN Propiedad p ON rp.idPropiedad = p.idPropiedad
+										INNER JOIN Propietario pp ON p.idPropietario = pp.idPropietario");
+
+		return $relacionpago;
+	}
+
+	/*TRAER SOLO LA INFORMAICON DE UNA RELACION DE PAGO*/
+	public function getOneDetailRelacionPago(){
+		
+	}
+
+
 	/*CONTAR LAS RELACIONES DE PAGO*/
 	public function getCountRP(){
 		$countRP = $this->db->query("SELECT COUNT(idRelacionPago) AS NumRP FROM RelacionPago");

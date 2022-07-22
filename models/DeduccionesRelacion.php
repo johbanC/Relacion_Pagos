@@ -1,6 +1,6 @@
 <?php 
 
-class PagosRelacion{
+class DeduccionesRelacion{
 	private $idrelacionpago;
 	private $fecha;
 	private $descripcion;
@@ -45,15 +45,15 @@ class PagosRelacion{
 		$this->valor = $valor;
 	}
 
-	/*GUARDAR DEDUCCIONES DE LA RELACION DE PAGO*/
-	public function savePR(){
+	/*GUARDAR PAGOS DE LA RELACION DE PAGO*/
+	public function saveDR(){
 
 		echo $cantidad = count($this->getFecha());
 
 
 		for ($i=0; $i < $cantidad; $i++) { 
 
-			$sql = "INSERT INTO Pagos(idRelacionPago, fecha, descripcion, valor) VALUES ('{$this->getIdrelacionpago()}','{$this->getFecha()[$i]}','{$this->getDescripcion()[$i]}','{$this->getValor()[$i]}')";
+			$sql = "INSERT INTO Deduciones(idRelacionPago, fecha, descripcion, valor) VALUES ('{$this->getIdrelacionpago()}','{$this->getFecha()[$i]}','{$this->getDescripcion()[$i]}','{$this->getValor()[$i]}')";
 
 			$save = $this->db->query($sql);
 		}
@@ -61,15 +61,10 @@ class PagosRelacion{
 		if ($save) {
 			$result = true;
 		}
-
 		return $result;
 
 
-
 	}
-
-
-
 
 
 

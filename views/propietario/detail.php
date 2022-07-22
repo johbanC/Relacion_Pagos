@@ -16,6 +16,31 @@
 
 
 
+
+
+
+<?php if (isset($_SESSION['relacionpago']) && $_SESSION['relacionpago'] == 'complete'): ?>
+  <script type="text/javascript">toastr.success('Guardado con exito.');</script>
+<?php elseif(isset($_SESSION['relacionpago']) && $_SESSION['relacionpago'] == 'failed'): ?>
+  <script type="text/javascript">toastr.error("Error al guardar, Verifica los datos introducidos.");</script>
+<?php endif; ?> 
+
+<?php if (isset($_SESSION['relacionpago_edit']) && $_SESSION['relacionpago_edit'] == 'complete'): ?>
+  <script type="text/javascript">toastr.success('Editado con exito.');</script>
+<?php elseif(isset($_SESSION['relacionpago_edit']) && $_SESSION['relacionpago_edit'] == 'failed'): ?>
+  <script type="text/javascript">toastr.error("Error al editar, Verifica los datos introducidos.");</script>
+<?php endif; ?> 
+
+<?php Utils::deleteSession('relacionpago'); ?>
+<?php Utils::deleteSession('relacionpago_edit'); ?> 
+
+
+
+
+
+
+
+
 <section class="content">
   <div class="container-fluid">
     <div class="row">

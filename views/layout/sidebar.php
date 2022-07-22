@@ -205,6 +205,16 @@
           </li>
 
           <li class="nav-item">
+            <a href="<?=base_url?>RelacionPago/index" class="nav-link">
+              <i class="fas fa-file-invoice-dollar"> </i>
+              <p>
+                Relacion de Pagos
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="<?=base_url?>Propietario/index" class="nav-link">
               <i class="fas fa-user-tie"> </i>
               <p>
